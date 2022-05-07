@@ -26,4 +26,4 @@ Q&A
 
 Q: 新增账号？
 
-A: 可以通过先修改config.json的`DispatchServer.Port`为443之外的端口，然后依次运行`docker exec -it grasscutter_web bash`, `java -jar grasscutter.jar`, 然后在出来的控制台里输入`account create XXX`，创建完成后记得修改回来。目前暂没有找到更好的办法，不知道为啥`docker attch`进入的控制台对输入的命令没有反应。
+A: 可以通过先修改config.json的`DispatchServer.Port`为443之外的端口，然后依次运行`docker exec -it grasscutter_web bash`, `java -jar grasscutter.jar`, 然后在出来的控制台里输入`account create XXX`，创建完成后记得修改回来。目前暂没有找到更好的办法，不知道为啥`docker attach`进入的控制台对输入的命令没有反应。
