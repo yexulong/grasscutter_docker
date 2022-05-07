@@ -6,9 +6,6 @@ services:
         image: mongo
         container_name: grasscutter_mongo
         restart: always
-        # environment:
-        #  MONGO_INITDB_ROOT_USERNAME: root
-            # MONGO_INITDB_ROOT_PASSWORD: root
         networks:
             - grasscutter-tier
     
@@ -22,7 +19,7 @@ services:
         ports:
             - '22102:22102/udp'
         volumes:
-            - ../full-grasscutter-dev-372_TomyJan:/opt/grasscutter
+            - ./full-grasscutter-dev-372_TomyJan:/opt/grasscutter
         depends_on: 
             - mongo
         networks:
@@ -38,7 +35,7 @@ services:
         ports:
             - '54321:54321'
         volumes:
-            - ../full-grasscutter-dev-372_TomyJan:/opt/grasscutter
+            - ./full-grasscutter-dev-372_TomyJan:/opt/grasscutter
         depends_on:
             - web
         networks:
