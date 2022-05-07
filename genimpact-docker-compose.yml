@@ -1,0 +1,48 @@
+version: '3.1'
+
+services:
+
+    mongo:
+        image: mongo
+        container_name: grasscutter_mongo
+        restart: always
+        # environment:
+        #  MONGO_INITDB_ROOT_USERNAME: root
+            # MONGO_INITDB_ROOT_PASSWORD: root
+        networks:
+            - grasscutter-tier
+    
+    web:
+        build: 
+            context: .
+            dockerfile: dockerfile
+        container_name: grasscutter_web
+        command: java -jar grasscutter.jar
+        restart: always
+        ports:
+            - '22102:22102/udp'
+        volumes:
+            - ../full-grasscutter-dev-372_TomyJan:/opt/grasscutter
+        depends_on: 
+            - mongo
+        networks:
+            - grasscutter-tier   
+            
+    proxy:
+        build: 
+            context: .
+            dockerfile: dockerfile1
+        container_name: grasscutter_proxy
+        command: ../mitmdump -s proxy.py --ssl-insecure --set block_global=false --listen-port 54321
+        restart: always
+        ports:
+            - '54321:54321'
+        volumes:
+            - ../full-grasscutter-dev-372_TomyJan:/opt/grasscutter
+        depends_on:
+            - web
+        networks:
+            - grasscutter-tier
+
+networks:
+    grasscutter-tier:
