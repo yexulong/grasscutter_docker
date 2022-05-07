@@ -19,4 +19,4 @@ config.json:
 
 proxy_config.py:
 
-`REMOTE_HOST` 修改为 web容器的ip。（可以通过docker inspect查看）
+`REMOTE_HOST` 修改为 grasscutter_web容器的ip。（可以通过docker inspect查看）
