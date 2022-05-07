@@ -20,3 +20,10 @@ config.json:
 proxy_config.py:
 
 `REMOTE_HOST` 修改为 grasscutter_web容器的ip。（可以通过docker inspect查看）
+
+
+Q&A
+
+Q: 新增账号？
+
+A: 可以通过先修改config.json的`DispatchServer.Port`为443之外的端口，然后依次运行`docker exec -it grasscutter_web bash`, `java -jar grasscutter.jar`, 然后在出来的控制台里输入`account create XXX`。目前暂没有找到更好的办法，不知道为啥`docker attch`进入的控制台对输入的命令没有反应。
