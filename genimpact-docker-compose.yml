@@ -15,6 +15,8 @@ services:
             dockerfile: dockerfile
         container_name: grasscutter_web
         command: java -jar grasscutter.jar
+        tty: true
+        stdin_open: true
         restart: always
         ports:
             - '22102:22102/udp'
